@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+# import plotly.express as px
 
 
 st.title("Cric info app")
@@ -18,12 +18,12 @@ st.dataframe(df)
 
 country_matches =df.groupby("country")["Matches"].sum().sort_values().reset_index().head(5)
 
-fig_country = px.pie(
-    country_matches,
-    names="country",
-    values="Matches",
-    title="Country wise Matches"
-)
+# fig_country = px.pie(
+#     country_matches,
+#     names="country",
+#     values="Matches",
+#     title="Country wise Matches"
+# )
 
 
 total_hundred = df["100"].sum()
@@ -44,4 +44,4 @@ with col4:
     st.metric(label="Sixes" , value = total_Sixes)
 with col5:
     st.metric(label="Players" , value = total_player)
-st.plotly_chart(fig_country)
+# st.plotly_chart(fig_country)
