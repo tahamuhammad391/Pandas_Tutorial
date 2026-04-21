@@ -18,14 +18,6 @@ st.dataframe(df)
 
 country_matches =df.groupby("country")["Matches"].sum().sort_values().reset_index().head(5)
 
-# fig_country = px.pie(
-#     country_matches,
-#     names="country",
-#     values="Matches",
-#     title="Country wise Matches"
-# )
-
-
 total_hundred = df["100"].sum()
 total_player = df["Player"].nunique()
 total_Matches = df["Matches"].sum()
@@ -45,3 +37,10 @@ with col4:
 with col5:
     st.metric(label="Players" , value = total_player)
 # st.plotly_chart(fig_country)
+
+# fig_country = px.pie(
+#     country_matches,
+#     names="country",
+#     values="Matches",
+#     title="Country wise Matches"
+# )
