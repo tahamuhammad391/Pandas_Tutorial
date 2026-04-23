@@ -43,23 +43,21 @@ elif select=="Player Analysis":
     player = st.selectbox("Select Player",df["Player"])
 
     pdata = df[df["Player"]==player]
-
-    stats = ["100","50","4s","6s"]
-    chart_data = (pdata[stats].iloc[0].reset_index())# iloc[0]
-    chart_data.columns = ["stats","Value"]
-
-    fig=px.bar(
-        chart_data,
-        x="Value",
-        y="stats",
-        title="Player Performances"
-    )
-
-    st.plotly_chart(fig,use_container_width=True)
-
+    st.dataframe(pdata)
+    df2=pdata[["100","50","6s","4s","innings","Strike_rate","Matches","Ave"]]
+    df3=df2.T.reset_index()
+    fig1=px.bar(df3,x="index",y=df3.columns[1])
+    st.plotly_chart(fig1,use_container_width=True)
+    df_pie=pdata[["100","50","6s","4s"]]
+    pie1=df_pie.T.reset_index()
+    fig2=px.pie(
+        pie1,
+        names="index",
+        values=pie1.columns[1]
+    )    
+    st.plotly_chart(fig2,use_container_width=True)
 
 #------------------ Country Insight--------------------
-
 elif select=="Country Insights":
     st.title="Country Insights"
 
@@ -122,10 +120,5 @@ elif select=="Comparison":
 
 elif select=="Data Explorer":
     st.title="Data Exploration"
-
-    player1 = st.selectbox("Select Player",df["Player"])
-
-    pldata = df[df["Player"]==player1]
-
-    st.dataframe(pldata)
+    st.dataframe(df)
  
