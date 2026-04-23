@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from streamlit_option_menu import option_menu
+from streamlit_option_menu import option_menu # This opion is used for navbar.
 
 
 st.set_page_config(layout="wide")
@@ -123,5 +123,9 @@ elif select=="Comparison":
 elif select=="Data Explorer":
     st.title="Data Exploration"
 
-    st.dataframe(df)
+    player1 = st.selectbox("Select Player",df["Player"])
+
+    pldata = df[df["Player"]==player1]
+
+    st.dataframe(pldata)
  
