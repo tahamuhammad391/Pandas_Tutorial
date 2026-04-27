@@ -9,7 +9,7 @@ st.set_page_config(layout="wide")
 
 #---------------- Load data-----------
 
-df=pd.read_csv("cgeiNf.csv")
+df=pd.read_csv("cricket.csv")
 
 #------------- NavBar-----------
 select = option_menu(
